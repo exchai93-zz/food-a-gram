@@ -20,4 +20,17 @@ feature 'posts' do
       expect(page).not_to have_content 'No posts yet'
     end
   end
+
+  context 'creating posts' do
+    scenario 'prompts user to upload photo, then displays the new post' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Caption', with: 'Avocado is the best'
+      click_button 'Post'
+      expect(page).to have_cotent 'Avocado is the best'
+      expect(current_paht).to eq '/posts'
+    end
+  end
+
+  context ''
 end
