@@ -1,16 +1,12 @@
 # User stories
 
 As a user
-So that I can post a photo
+So that I can make a post
 I want to be signed in to my Instagram account
 
 As a user
 So that I can post a photo
-I want to be able to access my camera
-
-As a user
-So that I can post a photo
-I want to be able to access my photo library
+I want to be able to upload it 
 
 As a user
 So that I can be informative of my post
