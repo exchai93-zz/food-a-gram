@@ -27,8 +27,8 @@ feature 'posts' do
       click_link 'Add a post'
       fill_in 'Caption', with: 'Avocado is the best'
       click_button 'Post'
-      expect(page).to have_cotent 'Avocado is the best'
-      expect(current_paht).to eq '/posts'
+      expect(page).to have_content 'Avocado is the best'
+      expect(current_path).to eq '/posts'
     end
   end
 
@@ -48,7 +48,7 @@ feature 'posts' do
     before { Post.create caption: 'Avocado is the best' }
     scenario 'let a user edit a post' do
       visit '/posts'
-      click_link 'Edit AVOCADO IS THE BEST'
+      click_link 'Edit Avocado is the best'
       fill_in 'Caption', with: 'AVOCADO IS THE BEST'
       click_button 'Update Post'
       click_link 'AVOCADO IS THE BEST'
