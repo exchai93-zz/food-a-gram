@@ -6,5 +6,6 @@
   = image_tag post.image.url(:thumb)
   = link_to "Edit #{post.caption}", edit_post_path(post)
   = link_to "Delete #{post.caption}", post_path(post), method: :delete
+  = link_to "Comment",  new_comment_path(post)
 - else
  %h1 No posts yet
