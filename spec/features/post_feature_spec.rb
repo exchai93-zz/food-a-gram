@@ -33,13 +33,38 @@ feature 'posts' do
   end
 
   context 'viewing posts' do
-    let!(:avocado) { Post.create(caption:'Avocado is the best') }
+    let!(:avocado) { Post.create(caption: 'Avocado is the best') }
 
     scenario 'lets a user view a post' do
       visit '/posts'
       click_link 'Avocado is the best'
       expect(page).to have_content 'Avocado is the best'
       expect(current_path).to eq '/posts/#{avocado.id}'
+    end
+  end
+
+  context 'editing posts' do
+
+    before { Post.create caption: 'Avocado is the best' }
+    scenario 'let a user edit a post' do
+      visit '/posts'
+      click_link 'Edit AVOCADO IS THE BEST'
+      fill_in 'Caption', with: 'AVOCADO IS THE BEST'
+      click_button 'Update Post'
+      click_link 'AVOCADO IS THE BEST'
+      expect(page).to have_content 'AVOCADO IS THE BEST'
+      expect(current_path).to eq '/posts/1'
+    end
+  end
+
+  context 'deleting posts' do
+
+    before { Post.create caption: 'Avocado is the best' }
+    scenario 'removes a post when a user clicks a delete link' do
+      visit '/posts'
+      click_link 'Delete Avocado is the best'
+      expect(page).not_to have_content 'Avocado is the best'
+      expect(page).to have_content 'Post deleted'
     end
   end
 end
