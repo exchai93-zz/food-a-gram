@@ -32,5 +32,14 @@ feature 'posts' do
     end
   end
 
-  context ''
+  context 'viewing posts' do
+    let!(:avocado) { Post.create(caption:'Avocado is the best') }
+
+    scenario 'lets a user view a post' do
+      visit '/posts'
+      click_link 'Avocado is the best'
+      expect(page).to have_content 'Avocado is the best'
+      expect(current_path).to eq '/posts/#{avocado.id}'
+    end
+  end
 end
