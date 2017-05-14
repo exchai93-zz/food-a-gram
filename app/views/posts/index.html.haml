@@ -1,3 +1,8 @@
-No posts yet
+%a(href='posts/new') Add a post
 
-%a(href='#') Add a post
+- if @posts.any?
+ - @posts.each do |post|
+  = post.caption
+  = image_tag post.image.url(:thumb)
+- else
+ %h1 No posts yet
