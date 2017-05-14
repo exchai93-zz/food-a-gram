@@ -1,8 +1,10 @@
-%a(href='posts/new') Add a post
+%a(href='/posts/new') Add a post
 
 - if @posts.any?
  - @posts.each do |post|
-  = post.caption
+  = link_to post.caption, post_path(post)
   = image_tag post.image.url(:thumb)
+  = link_to "Edit #{post.caption}", edit_post_path(post)
+  = link_to "Delete #{post.caption}", post_path(post), method: :delete
 - else
  %h1 No posts yet
