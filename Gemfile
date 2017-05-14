@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'haml'
+gem 'paperclip'
 
 
 group :development, :test do
